@@ -1,25 +1,22 @@
-import React, { useEffect } from 'react';
+import { useState, ChangeEvent, FormEvent ,useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
-import { GetProduct } from '../redux/action/getProductAction';
+import { GetProduct  } from '../redux/action/getProductAction';
 
-function ProductForm() {
+function GetProducts() {
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state: RootState) => state.products);
+  // const status = useSelector(state => state.product.status);
+  // const error = useSelector(state => state.product.Error);
+  const { product,error, status } = useSelector((state: any) => state.product);
 
   useEffect(() => {
-    dispatch(GetProduct());
+      dispatch(GetProduct());
   }, [dispatch]);
-
+  console.log('product:', product);
   return (
     <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : error ? (
-        <div>Error: {error}</div>
-      ) : (
+      
         <div>
-          {products.map((product) => (
+          {product.products.map((product) => (
             <div key={product.id}>
               <h3>{product.name}</h3>
               <p>{product.description}</p>
@@ -31,9 +28,9 @@ function ProductForm() {
             </div>
           ))}
         </div>
-      )}
+      
     </div>
   );
 }
 
-export default ProductForm;
+export default GetProducts

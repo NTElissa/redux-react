@@ -4,7 +4,7 @@ import ProductPage from "../src/pages/ProductPage";
 import Login from "./pages/LoginPage";
 import SigupPage from "./pages/sigupPage";
 import LoginForm from "./pages/LoginPage";
-import GetProductPage from "./pages/GetProductPage";
+import GetProducts from "./pages/GetProductPage";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route path="/product-page" element={<ProductPage/>} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SigupPage/>}/>
-          <Route path="/get-product" element={<GetProductPage/>} />
+          <Route path="/get-product" element={<GetProducts/>} />
        
         </Routes>
     </Router>

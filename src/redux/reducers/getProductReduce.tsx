@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GetProduct } from "../action/getProductAction";
 
-const sinupSlice = createSlice({
-  name: "GETProduct",
+const GetProductSlice = createSlice({
+  name: "product",
   initialState: {
-    sinup: [],
+    product: [],
     status: "",
     loading: false,
     error: null,
@@ -20,7 +20,7 @@ const sinupSlice = createSlice({
       .addCase(GetProduct.fulfilled, (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.status = "success";
-        state.sinup = action.payload;
+        state.product= action.payload;
         state.error = null;
       })
       .addCase(GetProduct.rejected, (state) => {
@@ -31,4 +31,4 @@ const sinupSlice = createSlice({
   },
 });
 
-export default sinupSlice.reducer;
+export default GetProductSlice.reducer;
