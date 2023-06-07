@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserLogin } from '../redux/action/LoginAction';
 import { useNavigate } from 'react-router-dom';
-
+import CheckPasswordExpiration from './CheckPasswordExpiration';
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -32,6 +32,7 @@ function LoginForm() {
 
   return (
     <div>
+  <CheckPasswordExpiration /> 
       {status === 'loading.....' && (
         <div className="bg-white text-black p-2 font-extrabold ">
           Loading...

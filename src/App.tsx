@@ -5,6 +5,7 @@ import Login from "./pages/LoginPage";
 import SigupPage from "./pages/sigupPage";
 import LoginForm from "./pages/LoginPage";
 import GetProducts from "./pages/GetProductPage";
+import PopupMessage from "./pages/CheckPasswordExpiration"; 
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SigupPage/>}/>
           <Route path="/get-product" element={<GetProducts/>} />
+          <Route path="/PopupMessage" element={<PopupMessage/>}/>
        
         </Routes>
     </Router>
