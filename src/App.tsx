@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SigupPage/>}/>
           <Route path="/get-product" element={<GetProducts/>} />
-          <Route path="/PopupMessage" element={<PopupMessage/>}/>
+          <Route path="/PopupMessage"PopupMessage element={<PopupMessage/>}/>
        
         </Routes>
     </Router>

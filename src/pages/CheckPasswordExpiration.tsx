@@ -5,33 +5,38 @@ import { passwordExpirationAction } from "../redux/action/passwordExpirationActi
 
 function PopupMessage() {
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.passwordExpiration);
+  const { passwordExpiration, status } = useSelector((state:any) => state.passwordExpiration);
 
   useEffect(() => {
-    const popupTimeout = setTimeout(() => {
+    const popupInterval = setInterval(() => {
       dispatch(passwordExpirationAction());
-    }, 180000); // 3 minutes in milliseconds
+    }, 40000); // 1 minute 
 
-    return () => clearTimeout(popupTimeout);
+    return () => clearInterval(popupInterval);
   }, [dispatch]);
 
-  const passwordExpirationData = useSelector((state) => state.passwordExpiration.data);
+  console.log("this backend feedback", passwordExpiration);
 
-  if (passwordExpirationData && passwordExpirationData.expired) {
+  if (passwordExpiration && passwordExpiration.expired) {
     return (
       <div className="popup-container">
-        <p className="popup-message">Password expired! Please change your password.</p>
+        <p className="popup-message">
+          Please change your password. It has expired!
+        </p>
       </div>
     );
   }
 
-  if (!message) {
+  if (!status) {
     return null; // Don't render anything if there is no popup message
   }
 
   return (
     <div className="popup-container">
-      <p className="popup-message">{message}</p>
+      <p className="popup-message">
+          Please change your password. It has expired!
+        </p>
+      <p className="popup-message">{status}</p>
     </div>
   );
 }

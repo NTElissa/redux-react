@@ -4,7 +4,7 @@ import { passwordExpirationAction } from "../action/passwordExpirationAction";
 const passwordSlice = createSlice({
   name: "passwordExpiration",
   initialState: {
-    data: null,
+    passwordExpiration:null,
     status: "",
     loading: false,
     error: null,
@@ -20,13 +20,13 @@ const passwordSlice = createSlice({
       .addCase(passwordExpirationAction.fulfilled, (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.status = "success";
-        state.data = action.payload;
+        state.passwordExpiration = action.payload;
         state.error = null;
       })
       .addCase(passwordExpirationAction.rejected, (state) => {
         state.loading = false;
         state.status = "error";
-        state.error = null;
+        return state;
       });
   },
 });
