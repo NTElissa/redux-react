@@ -10,7 +10,7 @@ function PopupMessage() {
   useEffect(() => {
     const popupInterval = setInterval(() => {
       dispatch(passwordExpirationAction());
-    }, 40000); // 1 minute 
+    }, 10000); // 10 seconds 
 
     return () => clearInterval(popupInterval);
   }, [dispatch]);
@@ -19,11 +19,7 @@ function PopupMessage() {
 
   if (passwordExpiration && passwordExpiration.expired) {
     return (
-      <div className="popup-container">
-        <p className="popup-message">
-          Please change your password. It has expired!
-        </p>
-      </div>
+      <div></div> // Don't render anything if the password is expired
     );
   }
 
@@ -32,11 +28,18 @@ function PopupMessage() {
   }
 
   return (
-    <div className="popup-container">
-      <p className="popup-message">
-          Please change your password. It has expired!
+    <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg p-8 shadow-md">
+        <p className="text-center mb-4 border border-gray-300 p-4">
+          <span className="text-red-500 font-bold">Please change your password. It has expired!</span>
         </p>
-      <p className="popup-message">{status}</p>
+        <p className="text-center mb-4">
+          <span className="text-gray-600">Click here to continue</span>
+        </p>
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full">
+          Change Password
+        </button>
+      </div>
     </div>
   );
 }
